@@ -19,8 +19,7 @@ function renderImgs() {
 function addIdToStorage(imdId) {
     let meme=getMeme();
     meme.selectedImgId=imdId;
-    console.log('meme',meme);
     saveToStorage(CURR_MEME, meme);
-    saveToStorage(IMG_ID_KEY, imdId);
     window.open("meme-editor.html");
 }
+

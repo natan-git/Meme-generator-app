@@ -134,9 +134,8 @@ label{
 
 
 /* ---image-gallery-- */
-.image-gallery{
-    border: solid red 4px;
-    margin-top: 5rem;
+.image-gallery img{
+    margin: 2rem 0 ;
 }
 
 /* -------footer--- */

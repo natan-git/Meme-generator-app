@@ -2,16 +2,19 @@
 let gCanvas;
 let gCtx;
 
-let currMeme=loadFromStorage(CURR_MEME);
+let gCurrMeme;
 
 function initMemeEditor() {
+    gMeme = loadFromStorage(CURR_MEME);
+    console.log('gMeme', gMeme);
+
     gCanvas = document.querySelector('#canvas');
     gCtx = gCanvas.getContext('2d');
     gCtx.fillRect(0, 0, gCanvas.width, gCanvas.height);
 
     resizeCanvas();
     renderCanvas();
-    
+
 }
 
 function resizeCanvas() {
@@ -20,21 +23,19 @@ function resizeCanvas() {
     gCanvas.height = elContainer.offsetHeight;
 }
 
+
+
 function getTopText() {
-    // let meme = getMeme();
-    // console.log('meme', meme);
     let text = document.getElementById('top-txt').value;
-    console.log('text',text);
-    addTxt(text);
-    drawTopTxt();
+    console.log('text', text);
+    addTopTxt(text);
+    renderCanvas();
+    
 }
 function getBottomText() {
-    let meme = loadFromStorage(CURR_MEME);
-    console.log('meme', meme);
     let text = document.getElementById('bottom-txt').value;
-    addTxt(text);
-    drawBottomTxt();
-    
+    addBottomTxt(text);
+    renderCanvas();
 }
 
 
@@ -42,99 +43,100 @@ function getBottomText() {
 // ------render gMeme obj to canvas---------
 
 function renderCanvas() {
-    let meme=getMeme();
-    console.log('meme',meme);
-    
-    // let imgId = loadFromStorage(IMG_ID_KEY)
+    let meme = getMeme();
+    // console.log('meme',meme);
     let imgObj = getMemeImg(meme.selectedImgId);
-    console.log('imgObj', imgObj);
+    
     var img = new Image();
     img.src = imgObj.url;
     img.onload = () => {
         gCanvas.width = img.width;
         gCanvas.height = img.height;
         gCtx.drawImage(img, 0, 0);
+        drawTopTxt();
+        drawBottomTxt();
+        
     }
 }
 
-// function drawCanvas(img) {
-//     gCtx.drawImage(img, 0, 0);
-//     var meme = getMeme();
-//     console.log(meme);
-//     meme.txts.forEach(function (txt) {
-//         drawTxt(txt.line);
-//     });
-// }
+
 
 function drawTopTxt() {
-    let meme=getMeme();
-    console.log('meme',meme);
-    let topTxt=meme.txts[0].line;
-    gCtx.fillStyle = 'white';
-    gCtx.font = "30px Arial";
-    gCtx.fillText(topTxt, 60, 40);
+    let meme = getMeme();
+    
+    let topTxt = meme.txts[0].line;
+
+    let fontColor=meme.txts[0].color;
+    gCtx.fillStyle = `${fontColor}`;
+
+    let fontSize=meme.txts[0].size;
+    
+    gCtx.font = `${fontSize}px Arial`;
+    
+    gCtx.fillText(topTxt, 5, 30);
 }
+
 
 function drawBottomTxt() {
-    let meme=getMeme();
-    console.log('meme',meme);
-    let bottomTxt=meme.txts[1].line;
-    gCtx.fillStyle = 'white';
-    gCtx.font = "30px Arial";
-    gCtx.fillText(bottomTxt, 100, 100);
+    let meme = getMeme();
+    let bottomTxt = meme.txts[1].line;
+
+    let fontColor=meme.txts[1].color;
+    gCtx.fillStyle = `${fontColor}`;
+
+    let fontSize=meme.txts[1].size;
+    gCtx.font = `${fontSize}px Arial`;
+    
+    gCtx.fillText(bottomTxt, 5, 380);
 }
-
-
-
 
 
 // ----increase/decrease font----
 
 function onIncreaseFont() {
+    //should be in service
+    gMeme.txts[0].size++;
+    gMeme.txts[1].size++;
+    
 
+    renderCanvas();
 }
 
 function onDecreaseFont() {
+    //should be in service
+    gMeme.txts[0].size--;
+    gMeme.txts[1].size--;
+    
+    renderCanvas();
+}
 
+function onDeleteFont(){
+    //should be in service
+    gMeme.txts[0].line='';
+    gMeme.txts[1].line='';
+    
+    renderCanvas();
+}
+
+function onSwitchLine(){
+    
 }
 
 
 
 
+// =====download Canvas====
+
+function downloadCanvas() {
+    var download = document.getElementById("download");
+    var image = document.getElementById("canvas").toDataURL("image/png")
+        .replace("image/png", "image/octet-stream");
+    download.setAttribute("href", image);
+}
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function onLogin(ev) {
-//     ev.preventDefault();
-//     let nameVal = document.getElementById('name').value;
-//     let passwordVal = document.getElementById('password').value;
-//     let confirmPasswordVal = document.getElementById('confirmPassword').value;
-//     let emailVal = document.getElementById('user-email').value;
-//     let dobVal = document.getElementById('dob').value;
-
-//     let userData = createUser(nameVal, passwordVal, confirmPasswordVal, emailVal, dobVal);
-//     saveUserToStorage(userData);
-// }
-
-
-
-//---------toggleMenu in low screen res-----------
 
 function onToggleMenu() {
     document.body.classList.toggle('open-menu');

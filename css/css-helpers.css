@@ -16,6 +16,10 @@
     
 }
 
+.wrap{
+    flex-wrap: wrap;
+}
+
 .space-around{
     justify-content: space-around;
 }

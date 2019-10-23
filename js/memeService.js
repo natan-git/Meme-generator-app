@@ -15,20 +15,14 @@ let gImgs = [
 let gMeme = {
     selectedImgId: 0,
     selectedTxtIdx: 0,
-    txts: []
+    txts: [{line: ' ', size: 40, align: 'left', color: 'red'}, {line: ' ', size: 40, align: 'left', color: 'red'}]
 }
 
-function addTxt(txt){
-    let newTxt = {
-        line: txt,
-        size: 20, align: 'left', color: 'red'
-    }
-    // console.log('txt',txt);
-    // console.log('newTxt.line',newTxt.line);
-    
-    gMeme.txts.push(newTxt);
-    console.log('gMeme',gMeme);
-    
+function addTopTxt(txt){
+    gMeme.txts[0].line=txt;
+}
+function addBottomTxt(txt){
+    gMeme.txts[1].line=txt;
 }
 
 function getMemeImg(imgId){
@@ -42,6 +36,7 @@ function getMeme(){
 function getImgs(){
     return gImgs;
 }
+
 
 
 

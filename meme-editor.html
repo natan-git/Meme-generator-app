@@ -27,7 +27,7 @@
     <!-- gallery and meme editor in main-container -->
     <section class="main-container flex flex-col">
 
-        <div class="meme-editor flex flex-row space-between">
+        <div class="meme-editor flex flex-row space-around">
 
             <div class="canvas-container">
                 <canvas id="canvas"></canvas>
@@ -36,29 +36,36 @@
             <div class="interface-container">
                 <div class="text-line flex flex-col">
                     <label for="top-txt">Top text:</label>
-                    <input type="text" id="top-txt">
+                    <input type="text" id="top-txt" onkeyup="getTopText()">
                     <button onclick="getTopText()">add top text</button>
                     <label for="bottom">Bottom text:</label>
-                    <input type="text" id="bottom-txt">
+                    <input type="text" id="bottom-txt" onkeyup="getBottomText()">
                     <button onclick="getBottomText()">add bottom text</button>
+                    <!-- <input type="text" id="top-txt" onkeyup="getTopText()">   one line input -->
+
+
                 </div>
                 <div class="line-manipulation flex space-around">
-                    <img class="icon" src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt="">
+                    <img class="icon" src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""
+                        onclick="onSwitchLine()">
                     <img class="icon" src="ICONS/add.png" alt="">
                     <img class="icon" src="ICONS/trash.png" alt="">
 
                 </div>
+
                 <div class="text-manipulation flex space-around">
                     <img class="icon" src="ICONS/increase font - icon.png" alt="" onclick="onIncreaseFont()">
                     <img class="icon" src="ICONS/decrease font - icon.png" alt="" onclick="onDecreaseFont()">
-                    <img class="icon" src="ICONS/trash.png" alt="">
+                    <img class="icon" src="ICONS/trash.png" alt="" onclick="onDeleteFont()">
                     <img class="icon" src="ICONS/align-to-left.png" alt="">
                     <img class="icon" src="ICONS/center-text-alignment.png" alt="">
                     <img class="icon" src="ICONS/align-to-right.png" alt="">
                 </div>
 
                 <div class="Download-share">
-                    <button class="Download-btn">Download</button>
+                    <a id="download" download="canvas.png">
+                        <button class="Download-btn" onClick="downloadCanvas()">Download</button>
+                    </a>
                     <button class="share-btn">share</button>
                 </div>
 
