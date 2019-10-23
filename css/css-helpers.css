@@ -1,0 +1,42 @@
+/*----flex helpers-----*/
+
+.flex {
+    display: flex;
+}
+.flex-col{
+    flex-direction: column;
+}
+
+.flex-row{
+    flex-direction: row;
+}
+
+.space-between {
+    justify-content: space-between;
+    
+}
+
+.space-around{
+    justify-content: space-around;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.flex.wrap {
+    flex-wrap: wrap;
+}
+
+
+/*----list helpers-----*/
+
+.clean-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}

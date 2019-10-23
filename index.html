@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/css-helpers.css">
+    <title>Meme Generator</title>
+</head>
+
+<body onload="initGallery()">
+
+    <div class="screen" onclick="onToggleMenu()"></div>
+
+    <header class="main-header flex space-between align-center">
+        <div class="logo">Meme Generator</div>
+        <nav>
+            <ul class="main-nav flex clean-list">
+                <li><a href="index.html">Gallery</a></li>
+                <li><a href="Mems.html">Mems</a></li>
+                <li><a href="About.html">About</a></li>
+            </ul>
+            <button id="menu-btn" class="menu-btn" onclick="onToggleMenu()">☰</button>
+        </nav>
+    </header>
+
+    <!-- gallery and meme editor in main-container -->
+    <section class="main-container flex flex-col">
+
+        <!-- <div class="meme-editor flex flex-row space-between">
+
+            <div class="canvas-container">
+                <canvas id="canvas"></canvas>
+            </div>
+
+            <div class="interface-container">
+                <div class="text-line flex flex-col">
+                    <label for="top-txt">Top text:</label>
+                    <input type="text" id="top-txt">
+                    <button onclick="getMemeText()">add top text</button>
+                    <label for="bottom">Bottom text:</label>
+                    <input type="text" id="bottom">
+                </div>
+                <div class="line-manipulation flex space-around">
+                    <img class="icon" src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt="">
+                    <img class="icon" src="ICONS/add.png" alt="">
+                    <img class="icon" src="ICONS/trash.png" alt="">
+
+                </div>
+                <div class="text-manipulation flex space-around">
+                    <img class="icon" src="ICONS/increase font - icon.png" alt="" onclick="onIncreaseFont()">
+                    <img class="icon" src="ICONS/decrease font - icon.png" alt="" onclick="onDecreaseFont()">
+                    <img class="icon" src="ICONS/trash.png" alt="">
+                    <img class="icon" src="ICONS/align-to-left.png" alt="">
+                    <img class="icon" src="ICONS/center-text-alignment.png" alt="">
+                    <img class="icon" src="ICONS/align-to-right.png" alt="">
+                </div>
+
+                <div class="Download-share">
+                    <button class="Download-btn">Download</button>
+                    <button class="share-btn">share</button>
+                </div>
+
+            </div>
+
+        </div> -->
+
+        <div class="image-gallery">
+
+        </div>
+
+    </section>
+
+    <footer>&copy; Copyright 2019 Meme Generator</footer>
+
+
+
+
+
+    <script src="js/utilService.js"></script>
+    <script src="js/memeService.js"></script>
+    <script src="js/meme-editor-controller.js"></script>
+    <script src="js/gallery-controller.js"></script>
+</body>
+
+</html>
