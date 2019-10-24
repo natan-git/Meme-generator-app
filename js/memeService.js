@@ -37,7 +37,9 @@ let gImgs = [
 let gMeme = {
     selectedImgId: 0,
     selectedTxtIdx: 0,
-    txts: [{ line: '', size: 40, align: 'left', color: 'white' }, { line: '', size: 40, align: 'left', color: 'white' }]
+    txts: [{ line: '', size: 40, align: 'left', color: 'white', stroke: 'black' },
+        { line: '', size: 40, align: 'left', color: 'white', stroke: 'black' }
+    ]
 }
 
 

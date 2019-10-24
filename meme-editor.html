@@ -20,7 +20,11 @@
             <ul class="main-nav flex clean-list">
                 <li><a href="index.html">Gallery</a></li>
             </ul>
-            <button id="menu-btn" class="menu-btn" onclick="onToggleMenu()">☰</button>
+            <div class="menu-icon" onclick="onToggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </nav>
     </header>
 
@@ -56,8 +60,8 @@
                         data-placement="top" title="Change color" class="font-size" onclick="onChangeColor()"></label>
                 <input class="color" id="color" type="color" value="" onchange="onChangeColor()">
                 <label for="color"><img class="icon" src="ICONS/text stroke.png" alt="" data-toggle="tooltip"
-                        data-placement="top" title="Change color" class="font-size" onclick="onChangeColor()"></label>
-                <input class="color" id="color" type="color" value="" onchange="onChangeColor()">
+                        data-placement="top" title="Change color" class="font-size" onclick="onStrokeChange()"></label>
+                <input class="color" id="stroke-color" type="color" value="" onchange="onStrokeChange()">
             </div>
 
             <div class="Download-share flex space-around">

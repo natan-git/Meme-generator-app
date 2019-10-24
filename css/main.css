@@ -46,7 +46,7 @@ body {
     text-decoration: none;
 }
 
-.menu-btn {
+.menu-icon {
     display: none;
 }
 
@@ -134,6 +134,13 @@ a:visited.block:hover {
     margin: 0 auto;
 }
 
+.text-line input {
+    border-radius: 2rem;
+    padding: 0.5rem;
+    border: solid #ffae00 2px;
+    outline: none;
+}
+
 
 /* -----interface container------- */
 
@@ -147,7 +154,7 @@ a:visited.block:hover {
     min-width: 25rem;
     border: solid rgb(226, 226, 226) 3px;
     border-radius: 1rem;
-    height: 20rem;
+    height: 22rem;
 }
 
 .text-line,
@@ -178,6 +185,7 @@ label {
     border-radius: 1000px;
     border-style: none;
     margin-top: 0.5rem;
+    outline: none;
 }
 
 .Download-share button:hover {
@@ -205,6 +213,7 @@ footer {
     color: whitesmoke;
     text-align: center;
     font-size: 1.4rem;
+    margin-top: 10rem;
 }
 
 
@@ -237,10 +246,20 @@ footer {
     .main-nav a:hover {
         background-color: rgba(204, 204, 204, 0.4);
     }
-    .menu-btn {
+    .menu-icon {
         display: block;
         margin-right: 2rem;
     }
+    .menu-icon div {
+        width: 35px;
+        height: 5px;
+        background-color: rgb(235, 235, 235);
+        margin: 6px 0;
+    }
+    /* .menu-btn {
+        display: block;
+        margin-right: 2rem;
+    } */
     /* ----gallery grid--- */
     .grid {
         display: grid;
@@ -285,5 +304,9 @@ footer {
 /* --hide color input --- */
 
 .color {
+    opacity: 0;
+}
+
+.stroke-color {
     opacity: 0;
 }

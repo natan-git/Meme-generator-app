@@ -5,10 +5,10 @@ let gCtx;
 let gCurrMeme;
 
 function initMemeEditor() {
+    gMeme = loadFromStorage(CURR_MEME);
     gCanvas = document.querySelector('#canvas');
     gCtx = gCanvas.getContext('2d');
     gCtx.fillRect(0, 0, gCanvas.width, gCanvas.height);
-
     resizeCanvas();
     renderCanvas();
 
@@ -42,7 +42,7 @@ function getBottomText() {
 
 function renderCanvas() {
     let meme = getMeme();
-    // console.log('meme',meme);
+    console.log('meme', meme);
     let imgObj = getMemeImg(meme.selectedImgId);
 
     var img = new Image();
@@ -53,7 +53,6 @@ function renderCanvas() {
         gCtx.drawImage(img, 0, 0);
         drawTopTxt();
         drawBottomTxt();
-        console.log('meme', meme);
     }
 }
 
@@ -64,28 +63,35 @@ function drawTopTxt() {
     let topTxt = meme.txts[0].line;
 
     let fontColor = meme.txts[0].color;
-    console.log('fontColor', fontColor);
     gCtx.fillStyle = `${fontColor}`;
 
     let fontSize = meme.txts[0].size;
-    gCtx.font = `${fontSize}px Arial`;
+    gCtx.font = `${fontSize}px Impact`;
 
-    // ctx.strokeText('topTxt', 10, 50);
+    let stroke = meme.txts[0].stroke;
+    console.log('stroke', stroke);
+    gCtx.strokeStyle = stroke;
+    gCtx.lineWidth = 2;
+
 
     let pos = meme.txts[0].align
     switch (pos) {
         case pos = 'left':
-            gCtx.fillText(topTxt, 5, 30);
+            gCtx.fillText(topTxt, 5, 40);
+            gCtx.strokeText(topTxt, 5, 40);
             break;
         case pos = 'center':
-            gCtx.fillText(topTxt, 150, 30);
+            gCtx.fillText(topTxt, 150, 40);
+            gCtx.strokeText(topTxt, 150, 40);
             break;
         case pos = 'right':
-            gCtx.fillText(topTxt, 300, 30);
+            gCtx.fillText(topTxt, 300, 40);
+            gCtx.strokeText(topTxt, 300, 40);
             break;
 
         default:
-            gCtx.fillText(topTxt, 5, 30);
+            gCtx.fillText(topTxt, 5, 40);
+            gCtx.strokeText(topTxt, 5, 40);
     }
 }
 
@@ -98,22 +104,30 @@ function drawBottomTxt() {
     gCtx.fillStyle = `${fontColor}`;
 
     let fontSize = meme.txts[1].size;
-    gCtx.font = `${fontSize}px Arial`;
+    gCtx.font = `${fontSize}px Impact`;
+
+    let stroke = meme.txts[1].stroke;
+    gCtx.strokeStyle = stroke;
+    gCtx.lineWidth = 2;
 
     let pos = meme.txts[1].align
     switch (pos) {
         case pos = 'left':
             gCtx.fillText(bottomTxt, 5, 380);
+            gCtx.strokeText(bottomTxt, 5, 380);
             break;
         case pos = 'center':
             gCtx.fillText(bottomTxt, 100, 380);
+            gCtx.strokeText(bottomTxt, 100, 380);
             break;
         case pos = 'right':
             gCtx.fillText(bottomTxt, 300, 380);
+            gCtx.strokeText(bottomTxt, 300, 380);
             break;
 
         default:
             gCtx.fillText(bottomTxt, 5, 380);
+            gCtx.strokeText(bottomTxt, 5, 380);
     }
 }
 
@@ -121,29 +135,25 @@ function drawBottomTxt() {
 // ----increase/decrease font----
 
 function onIncreaseFont() {
-    //should be in service
-    gMeme.txts[0].size++;
-    gMeme.txts[1].size++;
-
-
+    let meme = getMeme();
+    meme.txts[0].size++;
+    meme.txts[1].size++;
     renderCanvas();
 }
 
 function onDecreaseFont() {
-    //should be in service
-    gMeme.txts[0].size--;
-    gMeme.txts[1].size--;
-
+    let meme = getMeme();
+    meme.txts[0].size--;
+    meme.txts[1].size--;
     renderCanvas();
 }
 
 // --------delete text------------
 
 function onDeleteFont() {
-    //should be in service
-    gMeme.txts[0].line = '';
-    gMeme.txts[1].line = '';
-
+    let meme = getMeme();
+    meme.txts[0].line = '';
+    meme.txts[1].line = '';
     renderCanvas();
 }
 
@@ -153,7 +163,6 @@ function onAlignLeft() {
     let meme = getMeme();
     meme.txts[0].align = 'left';
     meme.txts[1].align = 'left';
-    // addLeftPro(left);
     renderCanvas();
 }
 
@@ -179,6 +188,15 @@ function onChangeColor() {
     console.log('fontColor', fontColor);
     meme.txts[0].color = fontColor;
     meme.txts[1].color = fontColor;
+}
+
+// ------stroke------
+
+function onStrokeChange() {
+    let meme = getMeme();
+    let strokeColor = document.querySelector('#stroke-color').value;
+    meme.txts[0].stroke = strokeColor;
+    meme.txts[1].stroke = strokeColor;
 }
 
 
