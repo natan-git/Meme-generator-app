@@ -1,6 +1,7 @@
-*{
+* {
     box-sizing: border-box;
 }
+
 
 /*---fonts----*/
 
@@ -9,9 +10,9 @@
     src: url('../fonts/ubuntu/Ubuntu-Light.ttf');
 }
 
-html{
+html {
     font-family: ubuntu, serif;
-    /* height: 100vh; */
+    height: 100vh;
 }
 
 body {
@@ -29,10 +30,9 @@ body {
 }
 
 .logo {
-    color: rgb(238, 238, 238);
-    font-size: 1.875rem;
-    letter-spacing: 0.1rem;
-    margin-left: 1.5rem;
+    width: 10rem;
+    height: 2rem;
+    margin-left: 2rem;
 }
 
 .main-nav li {
@@ -41,7 +41,8 @@ body {
 
 .main-nav a {
     color: rgb(238, 238, 238);
-    font-size: 1.3rem;;
+    font-size: 1.3rem;
+    ;
     text-decoration: none;
 }
 
@@ -49,13 +50,18 @@ body {
     display: none;
 }
 
+
 /* ----------underline animation ----------- */
-a, a:visited {
+
+li a,
+a:visited {
     text-decoration: none;
     position: relative;
     color: rgb(238, 238, 238);
-  }
-  a:after, a:visited:after {
+}
+
+li a:after,
+a:visited:after {
     content: '';
     height: 2px;
     position: absolute;
@@ -64,58 +70,108 @@ a, a:visited {
     width: 0%;
     background: rgb(238, 238, 238);
     transition: 0.5s;
-  }
-  a:hover:after, a:visited:hover:after {
+}
+
+li a:hover:after,
+a:visited:hover:after {
     width: 100%;
-  }
-  a.block, a:visited.block {
+}
+
+li a.block,
+a:visited.block {
     display: block;
     padding: 0.5em;
-  }
-  a.block:hover, a:visited.block:hover {
+}
+
+li a.block:hover,
+a:visited.block:hover {
     background: #eee;
-  }
-
-  /* -------main-container(gallery and meme editor)-------- */
-  .main-container{
-      width: 960px;
-      border: solid 4px blue ;
-      margin: 0 auto;
-
-  }
-
-  /* ----canvas-container---- */
-  .canvas-container{
-      width: 25rem;
-      height: 25rem;
-      border: 1px solid #000;
-  }
-
-
-.interface-container{
-    border: solid green 4px;
-    
-}
-/* -----interface container------- */
-.text-line,.line-manipulation,.text-manipulation{
-    margin-bottom: 2rem;
 }
 
-label{
-    margin-top: 1rem;
+
+/* -------main-container(gallery and meme editor)-------- */
+
+.main-container {
+    width: 960px;
+    margin: 0 auto;
 }
 
-.icon{
-    width: 2rem;
-    height: 2rem;
+
+/* ----gallery grid---- */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 1.5rem;
+    align-items: stretch;
+    margin: 0 5rem;
 }
-.icon:hover{
+
+.grid img {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.4);
+    max-width: 100%;
+}
+
+.grid img:hover {
     cursor: pointer;
 }
 
-.Download-share button{
+
+/* ----canvas-container---- */
+
+.canvas-container {
+    width: 25rem;
+    height: 25rem;
+    margin-bottom: 1rem;
+}
+
+
+/* --input style- */
+
+.text-line {
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+/* -----interface container------- */
+
+.meme-editor {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.interface-container {
+    min-width: 25rem;
+    border: solid rgb(226, 226, 226) 3px;
+    border-radius: 1rem;
+    height: 20rem;
+}
+
+.text-line,
+.line-manipulation,
+.text-manipulation {
+    margin-bottom: 2rem;
+}
+
+label {
+    margin-top: 1rem;
+}
+
+.icon {
+    width: 2rem;
+    height: 2rem;
+}
+
+.icon:hover {
+    cursor: pointer;
+}
+
+.Download-share button {
     color: whitesmoke;
-    background: linear-gradient(45deg, #00dbde, #fc00ff) no-repeat;
+    background: linear-gradient(45deg, #deda00, #eb7304) no-repeat;
     font-size: 1.5rem;
     padding: 0.5rem;
     width: 10rem;
@@ -123,33 +179,37 @@ label{
     border-style: none;
     margin-top: 0.5rem;
 }
-.Download-share button:hover{
+
+.Download-share button:hover {
     cursor: pointer;
-    background: linear-gradient(45deg, #00c2c5, #e201e6) no-repeat;
+    background: linear-gradient(45deg, #deda00c4, #eb7404be) no-repeat;
 }
 
-
-
-
+.font-manipulation {
+    margin-left: 9rem;
+}
 
 
 /* ---image-gallery-- */
-.image-gallery img{
-    margin: 2rem 0 ;
+
+.image-gallery img {
+    margin: 2rem 0;
 }
+
 
 /* -------footer--- */
 
-footer{
-height: 160px;
-background-color: #333;
-color: whitesmoke;
-text-align: center;
-font-size: 1.4rem;
+footer {
+    height: 160px;
+    background-color: #333;
+    color: whitesmoke;
+    text-align: center;
+    font-size: 1.4rem;
 }
 
 
 /* -------smartphone-------- */
+
 @media (max-width: 768px) {
     .main-nav {
         flex-direction: column;
@@ -160,52 +220,70 @@ font-size: 1.4rem;
         background: rgba(255, 255, 255, 0.8);
         border-left: 1px solid rgba(153, 153, 153, 0.5);
         transform: translate(100%, 0);
-
         transition: transform .6s;
     }
-
     .open-menu .main-nav {
         transform: translate(0, 0);
     }
-
     .main-nav li {
         border-bottom: 1px solid rgba(153, 153, 153, 0.5);
         width: 100%;
     }
-    
     .main-nav a {
         display: block;
         text-align: center;
         padding: 10px 0;
     }
-    
     .main-nav a:hover {
         background-color: rgba(204, 204, 204, 0.4);
     }
-
     .menu-btn {
         display: block;
         margin-right: 2rem;
     }
+    /* ----gallery grid--- */
+    .grid {
+        display: grid;
+        grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
+        grid-gap: 1.5rem;
+        align-items: stretch;
+    }
+    /* ---meme editor-- */
+    .meme-editor {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+    .interface-container {
+        margin-bottom: 10rem;
+    }
 }
+
 
 /* ------screen transition-------- */
 
 .screen {
     position: fixed;
-    left:0;
+    left: 0;
     top: 0;
     width: 100%;
-    height:100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     cursor: pointer;
     visibility: hidden;
     opacity: 0;
-    
     transition: opacity .3s;
 }
 
 .open-menu .screen {
     visibility: visible;
     opacity: 1;
+}
+
+
+/* --hide color input --- */
+
+.color {
+    opacity: 0;
 }

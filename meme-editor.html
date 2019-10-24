@@ -15,7 +15,7 @@
     <div class="screen" onclick="onToggleMenu()"></div>
 
     <header class="main-header flex space-between align-center">
-        <div class="logo">Meme Generator</div>
+        <div><img class="logo" src="LOGO/LOGO.png" alt=""></div>
         <nav>
             <ul class="main-nav flex clean-list">
                 <li><a href="index.html">Gallery</a></li>
@@ -25,54 +25,52 @@
     </header>
 
     <!-- gallery and meme editor in main-container -->
-    <section class="main-container flex flex-col">
 
-        <div class="meme-editor flex flex-row space-around">
 
-            <div class="canvas-container">
-                <canvas id="canvas"></canvas>
+    <div class="meme-editor">
+
+        <div class="canvas-container">
+            <canvas id="canvas"></canvas>
+        </div>
+
+        <div class="interface-container">
+            <div class="text-line flex flex-col">
+                <label for="top-txt">Top text:</label>
+                <input type="text" id="top-txt" onkeyup="getTopText()">
+                <label for="bottom">Bottom text:</label>
+                <input type="text" id="bottom-txt" onkeyup="getBottomText()">
             </div>
 
-            <div class="interface-container">
-                <div class="text-line flex flex-col">
-                    <label for="top-txt">Top text:</label>
-                    <input type="text" id="top-txt" onkeyup="getTopText()">
-                    <button onclick="getTopText()">add top text</button>
-                    <label for="bottom">Bottom text:</label>
-                    <input type="text" id="bottom-txt" onkeyup="getBottomText()">
-                    <button onclick="getBottomText()">add bottom text</button>
-                    <!-- <input type="text" id="top-txt" onkeyup="getTopText()">   one line input -->
+            <div class="text-manipulation flex space-around">
+                <img class="icon" src="ICONS/increase font - icon.png" alt="" onclick="onIncreaseFont()">
+                <img class="icon" src="ICONS/decrease font - icon.png" alt="" onclick="onDecreaseFont()">
+                <img class="icon" src="ICONS/trash.png" alt="" onclick="onDeleteFont()">
+                <img class="icon" src="ICONS/align-to-left.png" alt="" onclick="onAlignLeft()">
+                <img class="icon" src="ICONS/center-text-alignment.png" alt="" onclick="onAlignCenter()">
+                <img class="icon" src="ICONS/align-to-right.png" alt="" onclick="onAlignRight()">
+            </div>
 
+            <div class="font-manipulation flex">
 
-                </div>
-                <div class="line-manipulation flex space-around">
-                    <img class="icon" src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""
-                        onclick="onSwitchLine()">
-                    <img class="icon" src="ICONS/add.png" alt="">
-                    <img class="icon" src="ICONS/trash.png" alt="">
+                <label for="color"><img class="icon" src="ICONS/paint-board-and-brush.png" alt="" data-toggle="tooltip"
+                        data-placement="top" title="Change color" class="font-size" onclick="onChangeColor()"></label>
+                <input class="color" id="color" type="color" value="" onchange="onChangeColor()">
+                <label for="color"><img class="icon" src="ICONS/text stroke.png" alt="" data-toggle="tooltip"
+                        data-placement="top" title="Change color" class="font-size" onclick="onChangeColor()"></label>
+                <input class="color" id="color" type="color" value="" onchange="onChangeColor()">
+            </div>
 
-                </div>
-
-                <div class="text-manipulation flex space-around">
-                    <img class="icon" src="ICONS/increase font - icon.png" alt="" onclick="onIncreaseFont()">
-                    <img class="icon" src="ICONS/decrease font - icon.png" alt="" onclick="onDecreaseFont()">
-                    <img class="icon" src="ICONS/trash.png" alt="" onclick="onDeleteFont()">
-                    <img class="icon" src="ICONS/align-to-left.png" alt="">
-                    <img class="icon" src="ICONS/center-text-alignment.png" alt="">
-                    <img class="icon" src="ICONS/align-to-right.png" alt="">
-                </div>
-
-                <div class="Download-share">
-                    <a id="download" download="canvas.png">
-                        <button class="Download-btn" onClick="downloadCanvas()">Download</button>
-                    </a>
-                    <button class="share-btn">share</button>
-                </div>
-
+            <div class="Download-share flex space-around">
+                <a id="download" download="canvas.png">
+                    <button class="Download-btn" onClick="downloadCanvas()">Download</button>
+                </a>
+                <button class="share-btn">Share</button>
             </div>
 
         </div>
-    </section>
+
+    </div>
+
 
     <footer>&copy; Copyright 2019 Meme Generator</footer>
 
