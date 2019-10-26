@@ -183,13 +183,13 @@ label {
 .Download-share button {
     color: whitesmoke;
     background: linear-gradient(45deg, #deda00, #eb7304) no-repeat;
-    font-size: 1.5rem;
-    padding: 0.5rem;
-    width: 10rem;
+    font-size: 1rem;
+    padding: 0.4rem;
+    width: 8rem;
     border-radius: 1000px;
     border-style: none;
-    margin-top: 0.5rem;
     outline: none;
+    font-family: ubuntu, serif;
 }
 
 .Download-share button:hover {
@@ -313,4 +313,38 @@ footer {
 
 .stroke-color {
     opacity: 0;
+}
+
+
+/* ------save/download/share/publish btn css------ */
+
+.save-btn:hover {
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 10px;
+    padding: 5px;
+}
+
+.btn,
+a .btn {
+    font-size: 1.1rem;
+    background: linear-gradient(45deg, #deda00, #eb7304) no-repeat;
+    color: #fff;
+    padding: 0.2rem;
+    cursor: pointer;
+    margin: 0.5rem 0.5rem;
+    user-select: none;
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: 2rem;
+    text-decoration: none;
+    border-style: none;
+    outline: none;
+    width: 6rem;
+    font-family: ubuntu;
 }
