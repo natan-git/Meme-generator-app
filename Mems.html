@@ -10,12 +10,12 @@
     <title>Meme Generator</title>
 </head>
 
-<body>
+<body onload="renderSavedCanvasImgs()">
 
     <div class="screen" onclick="onToggleMenu()"></div>
 
     <header class="main-header flex space-between align-center">
-        <div class="logo">Login</div>
+        <div><img class="logo" src="LOGO/LOGO.png" alt=""></div>
         <nav>
             <ul class="main-nav flex clean-list">
                 <li><a href="index.html">Gallery</a></li>
@@ -29,6 +29,9 @@
             </div>
         </nav>
     </header>
+    <h2>click your meme to download</h2>
+
+    <div class="image-gallery grid"></div>
 
     <footer>&copy; Copyright 2019 Meme Generator</footer>
 
@@ -36,8 +39,9 @@
 
 
     <script src="js/utilService.js"></script>
-    <script src="js/userService.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/memeService.js"></script>
+    <script src="js/gallery-controller.js"></script>
+    <script src="js/meme-editor-controller.js"></script>
 </body>
 
 </html>

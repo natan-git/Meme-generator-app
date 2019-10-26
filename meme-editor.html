@@ -56,11 +56,16 @@
 
             <div class="font-manipulation flex">
 
-                <label for="color"><img class="icon" src="ICONS/paint-board-and-brush.png" alt="" data-toggle="tooltip"
-                        data-placement="top" title="Change color" class="font-size" onclick="onChangeColor()"></label>
+                <label for="color">
+                    <img class="icon" src="ICONS/paint-board-and-brush.png" alt="" data-toggle="tooltip"
+                        data-placement="top" title="Change color" class="font-size" onclick="onChangeColor()">
+                </label>
                 <input class="color" id="color" type="color" value="" onchange="onChangeColor()">
-                <label for="color"><img class="icon" src="ICONS/text stroke.png" alt="" data-toggle="tooltip"
-                        data-placement="top" title="Change color" class="font-size" onclick="onStrokeChange()"></label>
+
+                <label for="stroke-color">
+                    <img class="icon" src="ICONS/text stroke.png" alt="" data-toggle="tooltip" data-placement="top"
+                        title="Change color" class="font-size" onclick="onStrokeChange()">
+                </label>
                 <input class="color" id="stroke-color" type="color" value="" onchange="onStrokeChange()">
             </div>
 
@@ -68,13 +73,18 @@
                 <a id="download" download="canvas.png">
                     <button class="Download-btn" onClick="downloadCanvas()">Download</button>
                 </a>
-                <button class="share-btn">Share</button>
+                <button class="share-btn" onclick="uploadImg(this, event)">Share</button>
+            </div>
+
+            <div class="save-canvas Download-share flex justify-center">
+                <button onclick="onSaveCanvas()">Save</button>
             </div>
 
         </div>
 
     </div>
 
+    <img src="" alt="" class="canvas-img">
 
     <footer>&copy; Copyright 2019 Meme Generator</footer>
 

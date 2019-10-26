@@ -20,5 +20,5 @@ function addIdToStorage(imdId) {
     // let meme = getMeme();
     gMeme.selectedImgId = imdId;
     saveToStorage(CURR_MEME, gMeme);
-    window.open("meme-editor.html");
+    window.open("meme-editor.html", "_self");
 }

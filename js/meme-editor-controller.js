@@ -2,7 +2,9 @@
 let gCanvas;
 let gCtx;
 
-let gCurrMeme;
+// let gCurrMeme;
+
+const DATA_URL_KEY = "dataUrl";
 
 function initMemeEditor() {
     gMeme = loadFromStorage(CURR_MEME);
@@ -69,10 +71,8 @@ function drawTopTxt() {
     gCtx.font = `${fontSize}px Impact`;
 
     let stroke = meme.txts[0].stroke;
-    console.log('stroke', stroke);
     gCtx.strokeStyle = stroke;
     gCtx.lineWidth = 2;
-
 
     let pos = meme.txts[0].align
     switch (pos) {
@@ -195,6 +195,7 @@ function onChangeColor() {
 function onStrokeChange() {
     let meme = getMeme();
     let strokeColor = document.querySelector('#stroke-color').value;
+    console.log('strokeColor', strokeColor);
     meme.txts[0].stroke = strokeColor;
     meme.txts[1].stroke = strokeColor;
 }
@@ -212,4 +213,36 @@ function downloadCanvas() {
 
 function onToggleMenu() {
     document.body.classList.toggle('open-menu');
+}
+
+
+// ---------render saved imgs to gallery and adding download attribut -----------
+function renderSavedCanvasImgs() {
+    var imgs = loadFromStorage(DATA_URL_KEY);
+    console.log('imgs', imgs);
+    var strHTMLs = imgs.map(function(img, idx) {
+        return `<a href =${imgs[idx]} download > <img id="${img.id}" src=${imgs[idx]} alt="" onclick="downloadImg(this.src)"></img> </a>`;
+    });
+    var elImgList = document.querySelector('.image-gallery');
+    elImgList.innerHTML = strHTMLs.join('');
+}
+
+// -----saving canvas as url to new page-------
+
+function onSaveCanvas() {
+    let imgsData = [];
+    let dataUrl;
+    if (loadFromStorage(DATA_URL_KEY)) {
+        imgsData = loadFromStorage(DATA_URL_KEY);
+        dataUrl = gCanvas.toDataURL();
+        imgsData.push(dataUrl);
+        saveToStorage(DATA_URL_KEY, imgsData);
+    } else {
+
+        dataUrl = gCanvas.toDataURL();
+        imgsData.push(dataUrl);
+        saveToStorage(DATA_URL_KEY, imgsData);
+    }
+    // window.open("Mems.html", "_self");
+    window.open("Mems.html");
 }
