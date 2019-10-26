@@ -188,6 +188,7 @@ function onChangeColor() {
     console.log('fontColor', fontColor);
     meme.txts[0].color = fontColor;
     meme.txts[1].color = fontColor;
+    renderCanvas();
 }
 
 // ------stroke------
@@ -198,6 +199,8 @@ function onStrokeChange() {
     console.log('strokeColor', strokeColor);
     meme.txts[0].stroke = strokeColor;
     meme.txts[1].stroke = strokeColor;
+    renderCanvas();
+
 }
 
 
